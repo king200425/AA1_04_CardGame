@@ -1,0 +1,10 @@
+﻿  Card.cpp
+C:\Users\YikaiChen\Documents\GitHub\AA1_04_CardGame\AA1_04_CardGame\Card.h(17,63): error C2014: preprocessor command must start as first nonwhite space
+  (compiling source file 'Card.cpp')
+  
+C:\Users\YikaiChen\Documents\GitHub\AA1_04_CardGame\AA1_04_CardGame\Card.cpp(12,62): error C1075: '{': no matching token found
+  main.cpp
+C:\Users\YikaiChen\Documents\GitHub\AA1_04_CardGame\AA1_04_CardGame\Card.h(17,63): error C2014: preprocessor command must start as first nonwhite space
+  (compiling source file 'main.cpp')
+  
+  Generating Code...
