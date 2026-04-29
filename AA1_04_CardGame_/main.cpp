@@ -1,29 +1,43 @@
 #include<iostream>
+#include <ctime>
+#include <cstdlib>
 #include "Card.h"
+#include "Player.h"
 
 using std::cout;
 using std::endl;
 
 int main() {
-    cout << "=== TEST DE CARTAS ===" << endl;
+	// Semilla para generar n¨²meros aleatorios
+    std::srand(static_cast<unsigned>(time(nullptr)));
 
-    // Crear un par de cartas para probar
-    Card c1 = { Suit::HEART, 10 };
-    Card c2 = { Suit::SPADE, 10 };
-    Card c3 = { Suit::CLUB, 12 };
+    cout << "=== TEST DE JUGADOR Y STL VECTOR ===" << endl;
 
-    // Probar el operador << (Magia pura!)
-    cout << "Carta 1: " << c1 << endl;
-    cout << "Carta 2: " << c2 << endl;
-    cout << "Carta 3: " << c3 << endl;
+	// Crear un jugador con un nombre espec¨ªfico
+    Player p1("Yikai");
 
-    // Probar el operador < (L¨®gica de empate)
-    cout << "\n=== TEST DE COMPARACION ===" << endl;
-    if (c2 < c1) {
-        cout << c2 << " es menor que " << c1 << " (Funciona el desempate por palo!)" << endl;
-    }
+	// Mostrar el estado inicial del jugador
+    cout << "> Repartiendo cartas..." << endl;
+    p1.ReceiveCard({ Suit::CLUB, 5 });
+    p1.ReceiveCard({ Suit::HEART, 10 });
+    p1.ReceiveCard({ Suit::SPADE, 10 });
+    p1.ReceiveCard({ Suit::DIAMOND, 13 });
+    p1.ReceiveCard({ Suit::HEART, 2 });
 
-    if (c1 < c3) {
-        cout << c1 << " es menor que " << c3 << " (Funciona la comparacion por valor!)" << endl;
-    }
+	// Mostrar el estado del jugador despu¨¦s de recibir las cartas
+    cout << "\n> Estado del jugador tras recibir las cartas:" << endl;
+    cout << p1 << endl;
+
+	// Probar el m¨¦todo GetCard() para obtener una carta aleatoria
+    cout << "\n> El jugador tira una carta aleatoria..." << endl;
+    Card randomCard = p1.GetCard();
+    cout << "Carta tirada: " << randomCard << endl;
+    cout << p1 << " (Fijate que ya no tiene la carta tirada!)" << endl;
+
+	// Probar el m¨¦todo GetCard(Suit) para obtener la carta m¨¢s alta de un palo espec¨ªfico
+    cout << "\n> Pidiendo la carta mas alta de HEART..." << endl;
+    Card bestHeart = p1.GetCard(Suit::HEART);
+    cout << "Carta entregada: " << bestHeart << endl;
+    cout << p1 << " (Fijate que se le resto a la mano!)" << endl;
+
 }
